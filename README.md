@@ -1,4 +1,4 @@
-# village
+# Village
 
-<h2>REST API application.</h2> 
+<h3>REST API application.</h3></br>
 Simple auto-clicker providing village expansion, resources and upgrades.
