@@ -10,13 +10,33 @@
 </head>
 
 <body>
-    <nav>
+    <nav class="menu">
         <ul>
             <li>
                 <a href="/"><img class="logo" src="/assets/graphics/text-1647863431904.png" alt="Home"></a>
             </li>
             <li>
-                <p>test</p>
+                <a href="/profile/{userId}"><p>Profile</p></a>
+            </li>
+            <li>
+                <a href="/build"><p>Buildings</p></a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="info-menu">
+        <ul>
+            <li>
+                <p>Gold: {gold}</p>
+            </li>
+            <li>
+                <p>Wood: {wood}</p>
+            </li>
+            <li>
+                <p>Stone: {stone}</p>
+            </li>
+            <li>
+                <p>Villagers: {villagersFree}/{villagersTotal}</p>
             </li>
         </ul>
     </nav>
