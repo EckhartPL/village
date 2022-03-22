@@ -21,6 +21,10 @@ body {
     background-color: rgb(89, 189, 255);
 }
 
+.right {
+    float: right;
+}
+
 .menu li {
     float: left;
 }
