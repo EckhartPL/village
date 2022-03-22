@@ -46,6 +46,12 @@ body {
     background-color: rgb(0, 255, 30)
 }
 
+.info-menu li {
+    float: left;
+    padding: 0px 5px;
+    margin: 0;
+}
+
 .info-menu li a {
     float: left;
     display: block;
@@ -53,4 +59,8 @@ body {
     text-align: center;
     padding: 10px;
     text-decoration: none;
+}
+
+.info-menu p {
+    font-size: 17px;
 }

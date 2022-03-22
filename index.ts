@@ -1,7 +1,8 @@
 import * as express from 'express';
-import { homeRouter } from './routers/home';
-import { villagerRouter } from './routers/villager';
 import { engine } from 'express-handlebars';
+import { homeRouter } from './routers/home';
+import { registerRouter } from './routers/register';
+import { mineRouter } from './routers/mine';
 
 const app = express();
 
@@ -14,7 +15,8 @@ app.engine('.hbs', engine({
 }));
 app.set('view engine', '.hbs');
 
-app.use('/villager', villagerRouter);
 app.use('/', homeRouter);
+app.use('/register', registerRouter);
+app.use('/mine', mineRouter);
 
 app.listen(3000, 'localhost', () => console.log(`listening on http://localhost:3000`));
