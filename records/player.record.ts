@@ -58,11 +58,12 @@ export class PlayerRecord {
         return results.map(obj => new PlayerRecord(obj));
     }
 
-    static async getOne(id: string): Promise<PlayerRecord | null> {
+    static async getOne(name: string, password: string): Promise<PlayerRecord | null> {
         const [results] = 
         await pool.execute(
-            "SELECT `name`, `vitality`, `strength`, `defence` FROM `village` WHERE `id` = :id;", {
-                id,
+            "SELECT * FROM `player` WHERE `name` = :name AND `password` = :password;", {
+                name,
+                password,
             }) as playerRecordType;
 
             return results.length === 0 ? null : new PlayerRecord(results[0]);
