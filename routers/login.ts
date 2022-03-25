@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { PlayerRecord } from '../records/player.record';
-import * as session from 'express-session';
 
 export const loginRouter = Router();
 
@@ -18,8 +17,18 @@ loginRouter
             res.render('error/error', {
                 error: 'Invalid credentials',
             })
-        } 
+        }
         else {
+            req.session;
+            
+            if (req.session.viewCount) {
+                req.session.viewCount++;
+            } else {
+                req.session.viewCount = 1;
+            }
+
+            console.log(req.session.viewCount);
+            
             res.render('login/success', {
                 name,
                 password,
