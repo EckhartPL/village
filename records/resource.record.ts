@@ -1,4 +1,4 @@
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { pool } from '../utils/db';
 
 export class ResourceRecord {
@@ -8,8 +8,8 @@ export class ResourceRecord {
     public stone: number;
     public villager: number;
 
-    constructor(obj: Omit<ResourceRecord, 'update'>){
-        const {id, gold, wood, stone, villager} = obj;
+    constructor(obj: Omit<ResourceRecord, 'update'>) {
+        const { id, gold, wood, stone, villager } = obj;
 
         this.id = id ?? uuid();
         this.gold = gold;
@@ -27,5 +27,14 @@ export class ResourceRecord {
             villager: this.villager,
             id,
         })
+    }
+
+    static async getOne() {
+        const [results] =
+            await pool.execute(
+                "SELECT `gold`, `wood`, `stone`, `villager` FROM resource WHERE"
+            )
+
+        return 'null';
     }
 }

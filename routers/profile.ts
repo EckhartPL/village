@@ -4,10 +4,11 @@ export const profileRouter = Router();
 
 profileRouter
     .get('/', (req, res) => {
-        const viewCount = req.session.viewCount;
+        console.log(req.session.name);
+        
 
         res.render('profile/profile', {
-            viewCount,
             id: req.session.id,
+            name: req.session.name,
         })
     });

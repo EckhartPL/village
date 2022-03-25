@@ -5,7 +5,7 @@ export const logoutRouter = Router();
 logoutRouter
 
 .get('/', (req, res) => {
-    req.session.destroy;
+    req.session = null;
 
     res.render('logout/logout');
 })
