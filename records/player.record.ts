@@ -2,7 +2,7 @@ import { FieldPacket } from 'mysql2';
 import { v4 as uuid } from 'uuid';
 import { pool } from '../utils/db';
 
-type playerRecordType = [PlayerRecord[], FieldPacket[]]
+type playerRecordType = [PlayerRecord[], FieldPacket[]];
 
 export class PlayerRecord {
     public id?: string;
@@ -58,15 +58,26 @@ export class PlayerRecord {
         return results.map(obj => new PlayerRecord(obj));
     }
 
-    static async getOne(name: string, password: string): Promise<PlayerRecord | null> {
+    async getPlayer(): Promise<PlayerRecord | null> {
         const [results] = 
         await pool.execute(
             "SELECT * FROM `player` WHERE `name` = :name AND `password` = :password;", {
-                name,
-                password,
+                name: this.name,
+                password: this.password,
             }) as playerRecordType;
 
             return results.length === 0 ? null : new PlayerRecord(results[0]);
+    }
+
+    static async getResources(id: string) {
+        const [results] = 
+        await pool.execute(
+            "SELECT `gold`, `wood`, `stone`, `villager` FROM `resource` WHERE `id` = :id", {
+                id,
+            }
+        );
+
+        return results[0]; //@TODO find a type for results
     }
 
     static async listTop(topCount: number): Promise<PlayerRecord[]> {

@@ -1,6 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import { engine } from 'express-handlebars';
+import path from 'path';
 
 import { homeRouter } from './routers/home';
 import { registerRouter } from './routers/register';
@@ -24,6 +25,7 @@ app.use(express.urlencoded({
 app.use(express.static('public'));
 app.engine('.hbs', engine({
     extname: '.hbs',
+    partialsDir: path.join(__dirname, 'views/partials'),
 }));
 app.set('view engine', '.hbs');
 
