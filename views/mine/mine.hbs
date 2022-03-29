@@ -1,1 +1,20 @@
-{}
+{{> navbar}}
+
+<h1>Mine: </h1>
+
+<form action="/mine" method="POST">
+    <label>
+        <p>Gold:</p>
+        <input type="number" name="mine-gold" placeholder="How many...">
+    </label>
+    <label>
+        <p>Wood:</p>
+        <input type="number" name="mine-wood" placeholder="How many...">
+    </label>
+<label>
+    <p>Stone:</p>
+    <input type="number" name="mine-stooe" placeholder="How many...">
+</label>
+
+    <button type="submit">Mine</button>
+</form>

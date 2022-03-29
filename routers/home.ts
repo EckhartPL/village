@@ -4,9 +4,10 @@ export const homeRouter = Router();
 
 homeRouter
     .get('/', (req, res) => {
-        const {gold, wood, stone, villagers} = req.body;
-
         res.render('home', {
-            gold, wood, stone, villagers
+            gold: req.session.gold,
+            wood: req.session.wood,
+            stone: req.session.stone,
+            villager: req.session.villager,
         });
     })

@@ -1,18 +1,13 @@
 import { Router } from "express";
 
-export const profileRouter = Router();
+export const recruitRouter = Router();
 
-profileRouter
+recruitRouter
     .get('/', (req, res) => {
-        console.log(req.session.name);
-
-
-        res.render('profile/profile', {
-            id: req.session.id,
-            name: req.session.name,
+        res.render('recruit/recruit', {
             gold: req.session.gold,
             wood: req.session.wood,
             stone: req.session.stone,
             villager: req.session.villager,
-        })
+        });
     });

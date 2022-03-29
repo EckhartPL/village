@@ -58,7 +58,7 @@ export class PlayerRecord {
         return results.map(obj => new PlayerRecord(obj));
     }
 
-    async getPlayer(): Promise<PlayerRecord | null> {
+    async getOne(): Promise<PlayerRecord | null> {
         const [results] = 
         await pool.execute(
             "SELECT * FROM `player` WHERE `name` = :name AND `password` = :password;", {
@@ -67,17 +67,6 @@ export class PlayerRecord {
             }) as playerRecordType;
 
             return results.length === 0 ? null : new PlayerRecord(results[0]);
-    }
-
-    static async getResources(id: string) {
-        const [results] = 
-        await pool.execute(
-            "SELECT `gold`, `wood`, `stone`, `villager` FROM `resource` WHERE `id` = :id", {
-                id,
-            }
-        );
-
-        return results[0]; //@TODO find a type for results
     }
 
     static async listTop(topCount: number): Promise<PlayerRecord[]> {

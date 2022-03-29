@@ -1,8 +1,11 @@
+import { FieldPacket } from 'mysql2/promise';
 import { v4 as uuid } from 'uuid';
 import { pool } from '../utils/db';
 
+type resourceRecordType = [ResourceRecord[], FieldPacket[]];
+
 export class ResourceRecord {
-    public id: string;
+    public id?: string;
     public gold: number;
     public wood: number;
     public stone: number;
@@ -29,12 +32,13 @@ export class ResourceRecord {
         })
     }
 
-    static async getOne() {
-        const [results] =
-            await pool.execute(
-                "SELECT `gold`, `wood`, `stone`, `villager` FROM resource WHERE"
-            )
+    static async getOne(id: string): Promise<ResourceRecord | null> {
+        const [results] = 
+        await pool.execute(
+            "SELECT `gold`, `wood`, `stone`, `villager` FROM `resource` WHERE `id` = :id", {
+                id,
+            }) as resourceRecordType;
 
-        return 'null';
+        return results.length === 0 ? null : new ResourceRecord(results[0]);
     }
 }

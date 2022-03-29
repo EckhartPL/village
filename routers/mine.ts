@@ -1,14 +1,24 @@
-import {Router} from 'express';
-import { ResourceRecord } from '../records/resource.record';
+import { Router } from 'express';
 
 export const mineRouter = Router();
 
 mineRouter
-    .post('/', (req, res) => {
-        const resource = new ResourceRecord(req.body);
-
-        console.log(resource);
+    .get('/', (req, res) => {
         res.render('mine/mine', {
-            resource,
-        });
+            gold: req.session.gold,
+            wood: req.session.wood,
+            stone: req.session.stone,
+            villager: req.session.villager,
+        })
+    })
+    .post('/', (req, res) => {
+        console.log(req.body);
+        
+
+        res.render('mine/mine', {
+            gold: req.session.gold,
+            wood: req.session.wood,
+            stone: req.session.stone,
+            villager: req.session.villager,
+        })
     })

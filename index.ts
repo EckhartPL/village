@@ -9,6 +9,8 @@ import { mineRouter } from './routers/mine';
 import { loginRouter } from './routers/login';
 import { profileRouter } from './routers/profile';
 import { logoutRouter } from './routers/logout';
+import { recruitRouter } from './routers/recruit';
+import { buildRouter } from './routers/build';
 
 const app = express();
 
@@ -34,6 +36,8 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/profile', profileRouter);
+app.use('/build', buildRouter)
 app.use('/mine', mineRouter);
+app.use('/recruit', recruitRouter)
 
 app.listen(3000, 'localhost', () => console.log(`listening on http://localhost:3000`));
