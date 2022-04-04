@@ -4,7 +4,7 @@ export const profileRouter = Router();
 
 profileRouter
     .get('/', (req, res) => {
-        console.log(req.session.name);
+        console.log(req.session.gold);
 
 
         res.render('profile/profile', {

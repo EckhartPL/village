@@ -30,7 +30,7 @@ loginRouter
 
             console.log(`Resources: ${villager}, id: ${playerId}`);
 
-            req.session.playerid = player.id;
+            req.session.playerid = playerId;
             req.session.name = player.name;
             req.session.password = player.password;
 
@@ -39,7 +39,7 @@ loginRouter
             req.session.stone = stone;
             req.session.villager = villager;
 
-            app.locals.id = player.id;
+            app.locals.id = playerId;
             app.locals.name = player.name;
             app.locals.password = player.password;
 

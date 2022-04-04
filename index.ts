@@ -28,6 +28,11 @@ app.use(express.static('public'));
 app.engine('.hbs', engine({
     extname: '.hbs',
     partialsDir: path.join(__dirname, 'views/partials'),
+    helpers: {
+        deleteInterval: (interval: NodeJS.Timer)  => {
+            clearInterval(interval);
+        }
+    }
 }));
 app.set('view engine', '.hbs');
 
