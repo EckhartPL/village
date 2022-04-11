@@ -5,7 +5,9 @@ export const logoutRouter = Router();
 logoutRouter
 
 .get('/', (req, res) => {
-    req.session = null;
+    req.session.destroy(() => {
+        console.log(`User logged out.`);
+    });
 
     res.render('logout/logout');
 })
