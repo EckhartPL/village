@@ -4,21 +4,14 @@ export const mineRouter = Router();
 
 mineRouter
     .get('/', (req, res) => {
-        console.log('----------------------------------------------------');
-        
         const currDate = new Date();
-
-        console.log(`currDate: ${currDate}.`);
-        currDate.setTime(currDate.getTime() - 5000);
-        console.log(`req.session.startedAt: ${req.session.startedAt},\ncurrDate: ${currDate}`);
-
-        const startedAt: Date = new Date(req.session.startedAt);
+        currDate.setTime(currDate.getTime() - 60000);
 
         if (req.session.startedAt) {
-            console.log('test1');
-
+            let startedAt = new Date(req.session.startedAt);
             if (currDate.getTime() > startedAt.getTime()) {
-                console.log('test2');
+                req.session.startedAt = null;
+                req.session.counter = 0;
                 req.session.gold += req.session.minegold * 30;
                 req.session.wood += req.session.minewood * 30;
                 req.session.stone += req.session.minestone * 30;
@@ -26,21 +19,22 @@ mineRouter
                     + Number(req.session.minewood)
                     + Number(req.session.minestone);
 
-                console.log
-                    (`
-                Villagers: ${req.session.villager}\n
-                Gold: ${req.session.gold}\n
-                Wood: ${req.session.wood}\n
-                Stone: ${req.session.stone}
-                `);
-
                 res.render('mine/mine', {
                     gold: req.session.gold,
                     wood: req.session.wood,
                     stone: req.session.stone,
                     villager: req.session.villager,
                     message: 'Your resources has been gathered.',
+                    
                 })
+            } else {
+                res.render('mine/mine', {
+                    gold: req.session.gold,
+                    wood: req.session.wood,
+                    stone: req.session.stone,
+                    villager: req.session.villager,
+                    whenReady: Number(req.session.counter),
+                });
             }
         } else {
             res.render('mine/mine', {
@@ -48,7 +42,7 @@ mineRouter
                 wood: req.session.wood,
                 stone: req.session.stone,
                 villager: req.session.villager,
-            })
+            });
         }
     })
     .post('/', (req, res) => {
@@ -65,6 +59,9 @@ mineRouter
         } else {
             req.session.villager -= Number(minegold) + Number(minewood) + Number(minestone);
             req.session.startedAt = new Date();
+            req.session.counter = 10;
+
+            setInterval(() => req.session.counter++, 1000)
 
             res.render('mine/mine', {
                 gold: req.session.gold,
