@@ -4,3 +4,21 @@
 {{#if name}}
 <h3>Name: {{name}}</h3>
 {{/if}}
+<hr>
+{{#if top}}
+{{#each top}}
+<table>
+    <thead>
+        <tr>
+            <th>{{this.name}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Gold: {{this.gold}}</td>
+        </tr>
+    </tbody>
+</table>
+
+{{/each}}
+{{/if}}

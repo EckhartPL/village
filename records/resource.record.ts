@@ -21,14 +21,14 @@ export class ResourceRecord {
         this.villager = villager;
     }
 
-    async update(id: string): Promise<void> {
+    async update(): Promise<void> {
         await pool.execute(
-            "UPDATE `recource` SET `gold` = :gold, `wood` = :wood, `stone` = :stone, `villager` = :villager WHERE `id` = :id;", {
+            "UPDATE `resource` SET `gold` = :gold, `wood` = :wood, `stone` = :stone, `villager` = :villager WHERE `id` = :id;", {
             gold: this.gold,
             wood: this.wood,
             stone: this.stone,
             villager: this.villager,
-            id,
+            id: this.id,
         })
     }
 

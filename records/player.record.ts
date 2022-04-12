@@ -2,7 +2,15 @@ import { FieldPacket } from 'mysql2';
 import { v4 as uuid } from 'uuid';
 import { pool } from '../utils/db';
 
+interface TopPlayers {
+    name: string,
+    gold: number,
+    wood: number,
+    stone: number,
+};
+
 type playerRecordType = [PlayerRecord[], FieldPacket[]];
+type topPlayers = [TopPlayers[], FieldPacket[]];
 
 export class PlayerRecord {
     public id?: string;
@@ -69,13 +77,13 @@ export class PlayerRecord {
             return results.length === 0 ? null : new PlayerRecord(results[0]);
     }
 
-    static async listTop(topCount: number): Promise<PlayerRecord[]> {
+    static async listTop(topCount: number): Promise<TopPlayers[]> {
         const [results] = 
         await pool.execute(
-            "SELECT `name`, `vitality`, `strength`, `defence` FROM `village` ORDER BY `name` DESC LIMIT :topCount;", {
+            "SELECT player.name, resource.gold, resource.wood, resource.stone FROM `player` INNER JOIN `resource` ON player.id = resource.id ORDER BY player.name DESC LIMIT :topCount;", {
                 topCount,
-            }) as playerRecordType;
+            }) as topPlayers;
 
-            return results.map(obj => new PlayerRecord(obj));
+            return results;
     }
 }
