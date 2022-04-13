@@ -57,8 +57,6 @@ mineRouter
         }
     })
     .post('/', (req, res) => {
-        console.log(req.body);
-
         const { minegold, minewood, minestone } = req.body;
 
         req.session.minegold = minegold;

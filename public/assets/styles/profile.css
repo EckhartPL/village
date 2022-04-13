@@ -1,0 +1,42 @@
+.top-players-table {
+    position: relative;
+    transform: translate(-50%);
+    margin: 2vh 50vw;
+    padding: 0;
+    width: 15vw;
+    outline: 1px solid #efefef;
+    font-size: 1.25rem;
+}
+
+.top-players-table__thead {
+    margin: 0;
+    padding: 0;
+    background-color: #d3d3d3;
+    text-align: left;
+}
+
+.player-info-page {
+    font-size: 1.25rem;
+}
+
+.player-info-page__button {
+    border: 1px solid #000000;
+    border-radius: 5%;
+    text-align: center;
+    font-size: 1.1rem;
+    width: 7vw;
+    height: 4vh;
+}
+
+.player-info-page__select-top {
+    border: 1px solid #000000;
+    border-radius: 5%;
+    text-align: center;
+    font-size: 1.1rem;
+    width: 7vw;
+    height: 4vh;
+}
+
+h2 {
+    text-align: center;
+}

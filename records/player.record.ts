@@ -77,10 +77,18 @@ export class PlayerRecord {
             return results.length === 0 ? null : new PlayerRecord(results[0]);
     }
 
+    static async list(): Promise<TopPlayers[]> {
+        const [results] = 
+        await pool.execute(
+            "SELECT player.name, resource.gold FROM `player` INNER JOIN `resource` ON player.id = resource.id ORDER BY resource.gold DESC;") as topPlayers;
+
+            return results;
+    }
+
     static async listTop(topCount: number): Promise<TopPlayers[]> {
         const [results] = 
         await pool.execute(
-            "SELECT player.name, resource.gold, resource.wood, resource.stone FROM `player` INNER JOIN `resource` ON player.id = resource.id ORDER BY player.name DESC LIMIT :topCount;", {
+            "SELECT player.name, resource.gold, resource.wood, resource.stone FROM `player` INNER JOIN `resource` ON player.id = resource.id ORDER BY resource.gold DESC LIMIT :topCount;", {
                 topCount,
             }) as topPlayers;
 

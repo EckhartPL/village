@@ -1,24 +1,28 @@
+<head>
+    <link rel="stylesheet" href="/assets/styles/profile.css">
+</head>
+
 {{> navbar}}
+
 <h1>Profile page</h1>
 
 {{#if name}}
-<h3>Name: {{name}}</h3>
+<p class="player-info-page">Player name: {{name}}</p>
 {{/if}}
-<hr>
-{{#if top}}
-{{#each top}}
-<table>
-    <thead>
-        <tr>
-            <th>{{this.name}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Gold: {{this.gold}}</td>
-        </tr>
-    </tbody>
-</table>
 
-{{/each}}
+{{#if takenPlace}}
+<p class="player-info-page">You're at {{takenPlace}}{{placeSufix takenPlace}} place!</p>
 {{/if}}
+
+<hr>
+
+<p class="player-info-page">Select amount of top players:</p>
+<form action="/profile" method="POST">
+    <select class="player-info-page__select-top" name="top">
+        <option>3</option>
+        <option>10</option>
+        <option>50</option>
+    </select>
+
+    <button class="player-info-page__button" type="submit">Show</button>
+</form>

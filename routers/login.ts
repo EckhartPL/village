@@ -28,7 +28,7 @@ loginRouter
             
             const {gold, wood, stone, villager} = await ResourceRecord.getOne(playerId);
 
-            console.log(`Resources: ${villager}, id: ${playerId}`);
+            //console.log(`Resources: ${villager}, id: ${playerId}`);
 
             req.session.playerid = playerId;
             req.session.name = player.name;

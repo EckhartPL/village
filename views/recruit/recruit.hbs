@@ -1,3 +1,20 @@
+<head>
+    <script>
+        showMessage => {
+            console.log('it works!');
+        }
+    </script>
+</head>
+
 {{> navbar}}
 
 <h1>Recruit</h1>
+
+<form action="/recruit" method="POST">
+    <label>
+        <p>Villagers:</p>
+        <input type="number" name="minegold" placeholder="How many villagers...">
+    </label>
+
+    <button type="submit" onclick="showMessage()">Recruit</button>
+</form>
