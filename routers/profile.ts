@@ -34,6 +34,7 @@ profileRouter
             wood: req.session.wood,
             stone: req.session.stone,
             villager: req.session.villager,
+            villagerlimit: req.session.villagerlimit,
             takenPlace,
         });
     })
@@ -50,6 +51,7 @@ profileRouter
             wood: req.session.wood,
             stone: req.session.stone,
             villager: req.session.villager,
+            villagerlimit: req.session.villagerlimit,
             top,
         });
     })

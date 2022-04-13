@@ -1,7 +1,7 @@
 <head>
     <script>
         showMessage => {
-            console.log('it works!');
+            console.log('test')
         }
     </script>
 </head>
@@ -12,9 +12,9 @@
 
 <form action="/recruit" method="POST">
     <label>
-        <p>Villagers:</p>
-        <input type="number" name="minegold" placeholder="How many villagers...">
+        <p>Villagers (100gold per villager):</p>
+        <input type="number" name="recruit" placeholder="How many villagers..." min="1">
     </label>
 
-    <button type="submit" onclick="showMessage()">Recruit</button>
+    <button type="submit" onclick={{showMessage}}>Recruit</button>
 </form>

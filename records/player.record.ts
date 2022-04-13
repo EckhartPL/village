@@ -39,12 +39,13 @@ export class PlayerRecord {
         }
 
         await pool.execute(
-            "INSERT INTO `resource` VALUES (:id, :gold, :wood, :stone, :villager);", {
+            "INSERT INTO `resource` VALUES (:id, :gold, :wood, :stone, :villager, :villagerlimit);", {
                 id: this.id,
                 gold: 0,
                 wood: 0,
                 stone: 0,
                 villager: 1,
+                villagerlimit: 3,
             });
 
         await pool.execute(

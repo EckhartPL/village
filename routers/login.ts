@@ -26,7 +26,7 @@ loginRouter
         else {
             const { id: playerId } = await player.getOne();
             
-            const {gold, wood, stone, villager} = await ResourceRecord.getOne(playerId);
+            const {gold, wood, stone, villager, villagerlimit} = await ResourceRecord.getOne(playerId);
 
             //console.log(`Resources: ${villager}, id: ${playerId}`);
 
@@ -38,6 +38,7 @@ loginRouter
             req.session.wood = wood;
             req.session.stone = stone;
             req.session.villager = villager;
+            req.session.villagerlimit = villagerlimit;
 
             app.locals.id = playerId;
             app.locals.name = player.name;
@@ -46,11 +47,11 @@ loginRouter
 
             res.render('login/success', {
                 name: player.name,
-                id: app.locals.id,
                 gold,
                 wood,
                 stone,
                 villager,
+                villagerlimit,
             })
         }
 

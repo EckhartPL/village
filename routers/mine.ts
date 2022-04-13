@@ -12,6 +12,7 @@ mineRouter
             let startedAt = new Date(req.session.startedAt);
             if (currDate.getTime() > startedAt.getTime()) {
                 req.session.startedAt = null;
+                req.session.workingVillagers = 0;
 
                 req.session.gold += req.session.minegold * 30;
                 req.session.wood += req.session.minewood * 30;
@@ -27,6 +28,7 @@ mineRouter
                         wood: (req.session.wood),
                         stone: (req.session.stone),
                         villager: (req.session.villager),
+                        villagerlimit: (req.session.villagerlimit),
                     });
 
                     await resourceUpdate.update();
@@ -36,6 +38,7 @@ mineRouter
                     wood: req.session.wood,
                     stone: req.session.stone,
                     villager: req.session.villager,
+                    villagerlimit: req.session.villagerlimit,
                     message: 'Your resources has been gathered.',
                 })
             } else {
@@ -44,6 +47,7 @@ mineRouter
                     wood: req.session.wood,
                     stone: req.session.stone,
                     villager: req.session.villager,
+                    villagerlimit: req.session.villagerlimit,
                     whenReady: new Date(startedAt.getTime() + 300000).toLocaleTimeString(),
                 });
             }
@@ -53,6 +57,7 @@ mineRouter
                 wood: req.session.wood,
                 stone: req.session.stone,
                 villager: req.session.villager,
+                villagerlimit: req.session.villagerlimit,
             });
         }
     })
@@ -67,6 +72,7 @@ mineRouter
             res.render('mine/notenoughvillagers')
         } else {
             req.session.villager -= Number(minegold) + Number(minewood) + Number(minestone);
+            req.session.workingVillagers = Number(minegold) + Number(minewood) + Number(minestone);
             req.session.startedAt = new Date();
 
             res.render('mine/mine', {
@@ -74,6 +80,7 @@ mineRouter
                 wood: req.session.wood,
                 stone: req.session.stone,
                 villager: req.session.villager,
+                villagerlimit: req.session.villagerlimit,
                 whenReady: new Date((req.session.startedAt).getTime() + 300000).toLocaleTimeString()
             });
         }
