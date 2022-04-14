@@ -41,8 +41,8 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/profile', profileRouter);
-app.use('/build', buildRouter)
+app.use('/build', buildRouter);
 app.use('/mine', mineRouter);
 app.use('/recruit', recruitRouter)
 
-app.listen(3000, 'localhost', () => console.log(`listening on http://localhost:3000`));
+app.listen(3000, '0.0.0.0', () => console.log(`listening on http://localhost:3000`));

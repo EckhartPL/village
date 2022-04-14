@@ -1,14 +1,13 @@
 {{> navbar}}
 
-<h1>Build:</h1>
+<h1>Build</h1>
 
 <form action="/build" method="POST">
-<select name="build">
-    <option>House</option>
-    <option>Lumber Mill</option>
-    <option>Quarry</option>
-    <option>House</option>
-</select>
+    <label>
+        <p>Build a house (300gold / 200wood / 400stone):</p>
+        <input name="build" type="number" placeholder="How many houses...">
+    </label>
 
-<button type="submit">Build</button>
+
+    <button type="submit">Build</button>
 </form>

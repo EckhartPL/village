@@ -33,9 +33,24 @@ export class PlayerRecord {
         })
     }
 
-    async insert(): Promise<string> {
+    async insert(): Promise<string | null> {
         if (this.id === 'undefined') {
             this.id = uuid();
+        }
+
+        const [results] = await pool.execute(
+            "SELECT `name` FROM `player` WHERE `name` = :name;", {
+                name: this.name,
+            }
+        ) as playerRecordType;
+
+        try {
+            if (results[0].name === this.name) { 
+                console.log(results[0].name, this.name);      
+                return null;
+            }
+        } catch (e) {
+            console.log(e);
         }
 
         await pool.execute(

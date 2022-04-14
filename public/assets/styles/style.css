@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -67,4 +68,47 @@ body {
 
 .info-menu p {
     font-size: 17px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 3vh;
+    background-color: #000000;
+    text-align: center;
+}
+
+.footer__p {
+    position: relative;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.background-mountain {
+    position: absolute;
+    width: 50%;
+    height: 20vh;
+    bottom: 0;
+    background-image: url('../graphics/mountain.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.background-forest {
+    position: absolute;
+    width: 50%;
+    height: 20vh;
+    right: 0;
+    bottom: 0;
+    background-image: url('../graphics/forest.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input {
+    background-color: rgb(244, 248, 255);
 }
