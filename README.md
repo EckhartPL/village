@@ -1,4 +1,3 @@
 # Village
 
-<h3>REST API application.</h3></br>
-Simple application providing village expansion, resources and upgrades.
+<h3>Application providing village expansion, resource gathering and mining.</h3>
