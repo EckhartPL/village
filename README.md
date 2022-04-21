@@ -1,4 +1,4 @@
-![alt text](https://github.com/EckhartPL/village/blob/master/public/assets/graphics/logotest.png)
+![alt text](https://github.com/EckhartPL/village/blob/master/public/assets/graphics/logotest1.png)
 
 # Village
 
