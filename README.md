@@ -4,7 +4,7 @@
 
 <hr/>
 
-[Application](https://villagers-app.herokuapp.com/)
+[Application at Heroku](https://villagers-app.herokuapp.com/)
 [I'm an inline-style link](https://www.google.com)
 
 For testing application locally there's available sql file village.sql.
