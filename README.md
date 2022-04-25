@@ -6,6 +6,9 @@
 
 [Application at Heroku](https://villagers-app.herokuapp.com/)
 
+Account for testing:
+Login: William
+Pass: 123
 
 <p>For testing application locally there's available sql file village.sql.</p>
 There might occur error while importing database file, because of used uuid() expression as default value of column id in player and resource table.
