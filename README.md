@@ -4,8 +4,6 @@
 
 <hr/>
 
-[Application at Heroku](https://villagers-app.herokuapp.com/)
-
 Account for testing (newly created account have 0 gold, wood, stone and 1 villager): </br>
 Login: William
 Pass: 123
